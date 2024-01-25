@@ -5,6 +5,7 @@ import washhands from '../images/washinghands.png'
 import { useRecoilState } from "recoil";
 import Titlestate from "../store/title";
 
+import tapstate from '../store/tapdisable';
 
 
 
@@ -12,6 +13,9 @@ export default function Taphandle(){
     const [isClicked, setisClicked ] = useState (true);
     const [hands , setHands] = useRecoilState(Handpicstate)
     const [title , setTitle ] = useRecoilState(Titlestate)
+    const [tap , settap ] = useRecoilState(tapstate)
+
+
 
     const  hadnlestyle = {
         backgroundColor: isClicked ? '#3e3ee4ad' : '#e84f93ad' , // Your div background color
@@ -23,7 +27,8 @@ export default function Taphandle(){
         left:'42%',
         top: '25%',
         height: '50px',
-        width:'50px'
+        width:'50px',
+        display :  tap ? 'block' : 'none' 
     }
 
 
@@ -34,7 +39,6 @@ export default function Taphandle(){
             audio.play();
             setHands(washhands)
             setTitle("You are free of germs now lets do that again")
-
             setTimeout(() => {
                 window.location.reload()
             }, 5000);

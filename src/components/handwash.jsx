@@ -3,14 +3,19 @@ import handwashpic from '../images/handwash.png'
 import { useState } from 'react';
 import squirt from '../audio/handwashsound.mp3'
 import soaphands from '../images/soaponlyhands.png'
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useResetRecoilState } from 'recoil';
 import Handpicstate from "../store/atom";
 import Titlestate from '../store/title';
+import tapstate from '../store/tapdisable';
+
 
 export default function Dettol(){
     const [isClicked, setisClicked ] = useState(true);
     const [hands , setHands] = useRecoilState(Handpicstate);
     const [title , setTitle ] = useRecoilState(Titlestate)
+    const [rotated , setRotated ] = useState(false)
+    const [tap , settap ] = useRecoilState(tapstate) ; 
+
 
     const glowingStyle = {
         backgroundColor: isClicked ? '#3e3ee4ad' : '#e84f93ad'  , // Your div background color
@@ -22,7 +27,8 @@ export default function Dettol(){
         left:'10%',
         top: '41%',
         height: '320',
-        width:'320'
+        width:'320',
+        rotate : rotated ? '45deg' : '0deg'
       };
 
 function clickondettol(){
@@ -32,6 +38,13 @@ function clickondettol(){
     audio.play();
     setHands(soaphands)
     setTitle("NOW lets wash them ")
+    setRotated(true)
+    settap(true) ; 
+    
+    
+    setTimeout(() => {
+        setRotated(false)
+    }, 500);
 
 }
 

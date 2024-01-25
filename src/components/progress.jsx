@@ -7,8 +7,6 @@ import { useEffect } from "react";
 export default function Title(){
     const [title , setTitle ] = useRecoilState(Titlestate)
     useEffect(()=>{
-      
-            
             setTimeout(() => {
                 setTitle("Lets starts with soap")
             }, 2000);
@@ -16,7 +14,7 @@ export default function Title(){
   
     },[])
     return(
-        <div style={{textAlign : 'center' , fontSize:'10vh' , background: 'white' , fontWeight:'bold' , fontFamily:'cursive'}}>
+        <div style={{textAlign : 'center' , fontSize:'8vh' , background: 'white' , fontWeight:'bold' , fontFamily:'cursive'}}>
             {title}
         </div>
     )
