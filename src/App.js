@@ -1,24 +1,29 @@
-import logo from './logo.svg';
+import { RecoilRoot } from 'recoil';
 import './App.css';
-
+import Hand from './components/hand';
+import backgroundimg from './images/SINK.jpeg'
+import Dettol from './components/handwash';
+import Taphandle from './components/taphandle'
+import Title from './components/progress';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+<RecoilRoot>
+<div style={{
+  height : '100vh' ,
+  width  : '100vw',
+  backgroundImage : `url(${backgroundimg})`,
+  backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat', 
+}}>
+  <Title/>
+<Taphandle/>
+<Dettol/>
+<Hand/>
+</div>
+</RecoilRoot>
+
   );
 }
 
